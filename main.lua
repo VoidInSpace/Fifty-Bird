@@ -4,6 +4,8 @@
 push = require 'library/push'
 Class = require 'library/class'
 
+require 'source/StateMachine'
+
 require "source/Bird"
 require "source/Pipe"
 require "source/PipePair"
