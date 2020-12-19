@@ -5,7 +5,8 @@ push = require 'library/push'
 Class = require 'library/class'
 
 require 'source/StateMachine'
-require 'states/BaseSate'
+require 'states/BaseState'
+require 'states/PlayState'
 
 require "source/Bird"
 require "source/Pipe"
