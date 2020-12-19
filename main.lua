@@ -7,6 +7,7 @@ Class = require 'library/class'
 require 'source/StateMachine'
 require 'states/BaseState'
 require 'states/PlayState'
+require 'states/TitleScreenState'
 
 require "source/Bird"
 require "source/Pipe"
