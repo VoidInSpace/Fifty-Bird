@@ -69,6 +69,8 @@ function love.load()
         ['play'] = function() return PlayState() end,
     }
     gStateMachine:change('title')
+
+    love.keyboard.keysPressed = {}
 end
 
 function love.resize(w, h)
