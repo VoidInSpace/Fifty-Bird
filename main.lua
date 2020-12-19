@@ -63,6 +63,12 @@ function love.load()
         resizable = true, 
         vsync = true
     })
+
+    gStateMachine = StateMachine {
+        ['title'] = function() return TitleScreenState() end,
+        ['play'] = function() return PlayState() end,
+    }
+    gStateMachine:change('title')
 end
 
 function love.resize(w, h)
@@ -102,13 +108,15 @@ function love.update(dt)
             % VIRTUAL_WIDTH
     end
 
+    gStateMachine:update(dt)
+
     love.keyboard.keysPressed = {}
     love.mouse.buttonsPressed = {}
 end
 
 function love.draw()
     push:start()
-
+    gStateMachine:render()
     love.graphics.draw(background, -backgroundScroll, 0)
     love.graphics.draw(ground, -groundScroll, VIRTUAL_HEIGHT - 16)
 
