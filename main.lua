@@ -30,7 +30,7 @@ local GROUND_SCROLL_SPEED = 60
  
 local BACKGROUND_LOOPING_POINT = 413
 
-scrolling = true
+local scrolling = true
 
 function love.load()
     love.graphics.setDefaultFilter('nearest', 'nearest')
@@ -71,6 +71,7 @@ function love.load()
     gStateMachine:change('title')
 
     love.keyboard.keysPressed = {}
+
 end
 
 function love.resize(w, h)
@@ -118,8 +119,9 @@ end
 
 function love.draw()
     push:start()
-    gStateMachine:render()
+
     love.graphics.draw(background, -backgroundScroll, 0)
+    gStateMachine:render()
     love.graphics.draw(ground, -groundScroll, VIRTUAL_HEIGHT - 16)
 
     push:finish()

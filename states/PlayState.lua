@@ -1,12 +1,3 @@
---[[
-    PlayState Class
-    Author: Colton Ogden
-    cogden@cs50.harvard.edu
-
-    The PlayState class is the bulk of the game, where the player actually controls the bird and
-    avoids pipes. When the player collides with a pipe, we should go to the GameOver state, where
-    we then go back to the main menu.
-]]
 
 PlayState = Class{__includes = BaseState}
 
@@ -22,28 +13,30 @@ function PlayState:init()
     self.pipePairs = {}
     self.timer = 0
 
+  
     self.lastY = -PIPE_HEIGHT + math.random(80) + 20
 end
 
 function PlayState:update(dt)
-
+   
     self.timer = self.timer + dt
 
+ 
     if self.timer > 2 then
-
+        
         local y = math.max(-PIPE_HEIGHT + 10, 
             math.min(self.lastY + math.random(-20, 20), VIRTUAL_HEIGHT - 90 - PIPE_HEIGHT))
         self.lastY = y
 
+   
         table.insert(self.pipePairs, PipePair(y))
 
-        
+       
         self.timer = 0
     end
 
-
     for k, pair in pairs(self.pipePairs) do
-       
+    
         pair:update(dt)
     end
 
@@ -54,8 +47,10 @@ function PlayState:update(dt)
         end
     end
 
+  
     self.bird:update(dt)
 
+    
     for k, pair in pairs(self.pipePairs) do
         for l, pipe in pairs(pair.pipes) do
             if self.bird:collides(pipe) then
