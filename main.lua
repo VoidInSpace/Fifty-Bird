@@ -4,14 +4,15 @@
 push = require 'library/push'
 Class = require 'library/class'
 
-require 'source/StateMachine'
-require 'states/BaseState'
-require 'states/PlayState'
-require 'states/TitleScreenState'
-
 require "source/Bird"
 require "source/Pipe"
 require "source/PipePair"
+require "source/StateMachine"
+
+require 'states/BaseState'
+require 'states/CountdownState'
+require 'states/PlayState'
+require 'states/TitleScreenState'
 
 WINDOW_WIDTH = 800
 WINDOW_HEIGHT = 500
@@ -30,7 +31,7 @@ local GROUND_SCROLL_SPEED = 60
  
 local BACKGROUND_LOOPING_POINT = 413
 
-local scrolling = true
+scrolling = true
 
 function love.load()
     love.graphics.setDefaultFilter('nearest', 'nearest')
@@ -64,14 +65,16 @@ function love.load()
         vsync = true
     })
 
+    -- The prefix 'g' indicates that it is a global variable
     gStateMachine = StateMachine {
         ['title'] = function() return TitleScreenState() end,
+        ['countdown'] = function() return CountdownState() end,
         ['play'] = function() return PlayState() end,
     }
     gStateMachine:change('title')
-
+    
     love.keyboard.keysPressed = {}
-
+    love.mouse.buttonsPressed = {}
 end
 
 function love.resize(w, h)
