@@ -14,6 +14,7 @@ function PlayState:init()
     self.timer = 0
 
     self.lastY = -PIPE_HEIGHT + math.random(80) + 20
+    -- uses math.random() to make pipe intervals slightly random
     self.pipeInterval = math.random(3) == 2 and 3 or 2
 end
 
