@@ -1,6 +1,7 @@
 PipePair = Class{}
 
 function PipePair:init(y)
+    self.scored = false
     self.x = VIRTUAL_WIDTH + 32
     self.y = y
     self.pipes = {
@@ -10,7 +11,7 @@ function PipePair:init(y)
     }
 
     self.remove = false
-    self.scored = false
+    
 end
 
 function PipePair:update(dt)
