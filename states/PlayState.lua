@@ -102,6 +102,9 @@ function PlayState:render()
         love.graphics.printf('PAUSED', 0, 100, VIRTUAL_WIDTH, 'center')
         love.graphics.setFont(mediumFont)
         love.graphics.printf('Press P to resume', 0, 160, VIRTUAL_WIDTH, 'center')
+    else
+        love.graphics.setFont(mediumFont)
+        love.graphics.print('Press P to pause', 8, 250)
     end
 end
 
