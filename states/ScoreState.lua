@@ -23,13 +23,13 @@ function ScoreState:render()
 
     local receivedMedal = nil
     local medalType = nil
-    if self.score > 15 then
+    if self.score > 20 then
         receivedMedal = self.goldMedal
         medalType = 'gold'
-    elseif self.score > 5 and self.score <= 15 then
+    elseif self.score > 10 and self.score <= 20 then
         receivedMedal = self.silverMedal
         medalType = 'silver'
-    elseif self.score > 1 and self.score <= 5 then 
+    elseif self.score > 0 and self.score <= 10 then 
         receivedMedal = self.bronzeMedal
         medalType = 'bronze'
     end
